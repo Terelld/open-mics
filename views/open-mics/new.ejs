@@ -1,0 +1,31 @@
+<%- include('../partials/header') %>
+
+<h2> Add an Open Mic!</h2>
+<form action="/open-mics" method="POST">
+    <label>Name of Venue:
+      <input type="text" name="venue">  
+    </label><br>
+    <label>Address:
+        <input type="text" name="address">
+    </label><br>
+    <label>What day is the Open Mic? </label>
+    <select name="openMicDay">
+        <option value="Sunday">Sunday</option>
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+    </select> <br>
+    <label>What time does it start? 
+        <input type="time" name="time">
+    </label><br>
+    <label> Is there are live band? 
+        <select type="text" name="band">
+            <option value="yes">Yes they do!</option>
+            <option value="no">No, they don't!</option>
+        </select>
+    </label><br>
+    <button type="submit">Submit Open Mic</button>
+</form>
