@@ -1,8 +1,73 @@
+.navbar {
+  text-align: center;
+  font-size: 15px;
+}
+
+.submit {
+  text-align: center;
+  line-height: 35px;
+  font-size: 20px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 900;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, p {
+  font-family: 'Poppins', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  font-size: 50px;
 }
 
 a {
   color: #00B7FF;
 }
+
+/* table design */
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  border-spacing: 10px,
+  
+}
+.openMicList {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reviews {
+  font-size: 15px;
+}
+.data {
+  font-size: 18px;
+}
+
+th {
+  border: 1px solid black;
+  padding: 5px 10px;
+  
+}
+
+td{
+  border: 1px solid black;
+}
+
+.button {
+  margin: 10px;
+  margin-left: 0px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: 15px;
+  
+}
+
+

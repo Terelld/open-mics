@@ -1,0 +1,34 @@
+<div class="wrapper">
+
+<%- include('../partials/header') %>
+
+<h2>Open Mics</h2>
+<table class="openMicList">
+  <thead>
+    <tr>
+      <th>Venue</th>
+      <th>Address</th>
+      <th>Day</th>
+      <th>Time</th>
+      <th>Band?</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% openMics.forEach(function(e) { %>
+      <tr>
+        <td><%= e.venue %></td>
+        <td><%= e.address %></td>
+        <td><%= e.openMicDay %></td>
+        <td><%= e.time %></td>
+        <td><%= e.band %></td>
+        <td><%= e.rating %></td>
+        
+        <td><a href="/open-mics/<%= e._id %>">DETAILS</a></td>
+        <!-- finish the ternary expression to display 'Yes' or 'Nope' -->
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+</div>

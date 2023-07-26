@@ -4,13 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Open Mics</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
+    <nav class="navbar">
+      <img src="https://imgur.com/a/kTCNXjd">
         <a href="/">Home</a>
         |
-        <a href="/open-mics/new">Add an OpenMic!</a>
+        <a href="/open-mics">All Open Mics</a>
+        <% if (user) { %>
+        |
+        <a href="/open-mics/new" <%- title === 'New Open Mic' ? 'class="active" ' : '' %>>New Open Mic</a>
+        |
+      <a href="/logout">LOG OUT</a>
+          
+      <% } else { %>
+        <a href="/auth/google" >LOG IN</a>
+      <% } %>
     </nav>
     
-</body>
-</html>
