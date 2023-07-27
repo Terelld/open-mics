@@ -10,7 +10,7 @@
     <div class="data"><%= OpenMic.openMicDay %></div>
     <div class="title">Time: </div>
     <div class="data"><%= OpenMic.time %></div>
-    <div class="title">Band: </div>
+    <div class="title">Is there a Band? </div>
     <div class="data"><%= OpenMic.band %></div>
     
     
@@ -19,7 +19,7 @@
 </section> 
  <br><br<h2> Share Your Review: </h2>
  <form id="add-open-mic-review-form" method="POST" 
- action="/<%= OpenMic.id%>/reviews">
+ action="/open-mics/<%= OpenMic.id%>/reviews">
 <br>
  <textarea name="experience"></textarea>
  <br>
@@ -42,31 +42,33 @@
                 <th>Date</th>
                 <th>Review</th>
                 <th>Rating</th>
-                <th></th>
+                <th>Optons</th>
             </tr>
         </thead>
         <tbody>
+         
             <% let total = 0 %>
             <% OpenMic.reviews.forEach(function(r) { %>
             <% total += r.rating %>
-            <tr>
-                <td><%= r.createdAt.toLocaleDateString() %></td>
-                <td><%= r.experience %></td>
-                <td><%= r.rating %></td>
-                <td>
-                    <% if (user?.equals(r.user)) { %>
-                 <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                <tr>
+                    <td><%= r.createdAt.toLocaleDateString() %></td>
+                    <td><%= r.experience %></td>
+                    <td><%= r.rating %></td>
+                    <td>
+                        
+                    <form action="<%= OpenMic._id %>/reviews/<%= r._id %>/delete" method="POST">
                         <button type="submit"> Remove </button>
-                    </form> 
-                    <% } %>
-                </td>
-            </tr>
-            <% }); %>
-            <tr>
-                <td colspan="2"></td>
-                <td><%= (total / OpenMic.reviews.length).toFixed(1) %></td>
-            </tr>
+                    </form>
+                    
+                    </td>
+                </tr>
+                    <% }); %>
+                <tr>
+                    <td colspan="2">Rating Average:</td>
+                    <td><%= (total / OpenMic.reviews.length).toFixed(1) %></td>
+                </tr>
         </tbody>
+             
     </table>
     <% } else { %>
     <h5> No Open Mic Reviews Yet...</h5>

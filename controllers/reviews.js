@@ -1,9 +1,12 @@
-const OpenMic = require("../models/open-mic");
 
+// const OpenMic = require("../models/open-mic");
+// const Review = require("../models/open-mic");
+
+const {OpenMic, Review} = require("../models/open-mic");
 
 module.exports = {
     create,
-    
+    deleteReview, 
 };
 
 
@@ -23,4 +26,24 @@ async function create(req, res) {
     res.redirect(`/open-mics/${openMic._id}`);
   }
 
+  
 
+  async function deleteReview(req, res) {
+    const openMic = await OpenMic.findById(req.params.id);
+    
+    const reviewToDelete = openMic.reviews.id(req.params.review_id);
+
+    try {
+      reviewToDelete.deleteOne();
+      await openMic.save();
+    }catch (err) {
+        console.log(err);
+    }
+    res.redirect(`/open-mics/${openMic._id}`);
+    console.log('review removed', deleteReview);
+}
+
+
+  
+
+  

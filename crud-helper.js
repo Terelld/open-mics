@@ -3,7 +3,7 @@ require('dotenv').config();
 require('./config/database');
 
 // Require the app's Mongoose models
-const OpenMic = require('./models/openMic');
+const {OpenMic, Review} = require('./models/openMic');
 
 
 // Example CRUD

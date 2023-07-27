@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
@@ -12,11 +13,12 @@ const reviewSchema = new Schema({
         min: 1,
         max: 5,
         default: 5
-    }
-
+    },
     }, {
         timestamps: true
-    });
+});
+
+
 
 
 const openMicSchema = new Schema ({
@@ -37,4 +39,10 @@ const openMicSchema = new Schema ({
 
 
 
-module.exports = mongoose.model('OpenMic', openMicSchema);
+var OpenMic = mongoose.model('OpenMic', openMicSchema);
+var Review = mongoose.model('Review', reviewSchema);
+
+module.exports = {
+    OpenMic, 
+    Review
+}

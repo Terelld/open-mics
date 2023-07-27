@@ -1,11 +1,10 @@
-const OpenMic = require("../models/open-mic");
+const {OpenMic} = require("../models/open-mic");
 
 module.exports = {
     new: newOpenMic,
     create,
     index,
     show
-    
 };
 
 
@@ -19,7 +18,6 @@ async function create(req, res) {
 }
 
 async function index(req, res) {
-    let allOpenMics = await OpenMic.find();
     res.render('open-mics/index', {
         openMics: await OpenMic.find(), title: 'Open Mics'
     });
