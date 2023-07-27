@@ -12,10 +12,12 @@
 <body>
     <nav class="navbar">
       <img src="https://imgur.com/a/kTCNXjd">
+     
         <a href="/">Home</a>
+        <% if (user) { %>
         |
         <a href="/open-mics">All Open Mics</a>
-        <% if (user) { %>
+        
         |
         <a href="/open-mics/new" <%- title === 'New Open Mic' ? 'class="active" ' : '' %>>New Open Mic</a>
         |
