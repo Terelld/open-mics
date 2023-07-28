@@ -6,7 +6,9 @@ const {OpenMic, Review} = require("../models/open-mic");
 
 module.exports = {
     create,
-    deleteReview, 
+    deleteReview,
+    editReview, 
+    updateReview,
 };
 
 
@@ -43,7 +45,39 @@ async function create(req, res) {
     console.log('review removed', deleteReview);
 }
 
+async function editReview(req, res) {
+  try {
+    const openMic = await OpenMic.findOne({ _id: req.params.id });
 
-  
+    if (!openMic) {
+      return res.redirect('/open-mics');
+    }
+    const reviewToEdit = openMic.reviews.id(req.params.review_id);
+
+    if (!reviewToEdit) {
+      return res.redirect(`/open-mics/${openMic._id}`);
+    }
+
+    res.render('open-mics/edit', { openMic, review: reviewToEdit });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
+  }
+}
+
+
+async function updateReview(req, res) {
+  const openMic = await OpenMic.findById(req.params.id);
+  const reviewToUpdate = openMic.reviews.id(req.params.review_id);
+
+  try {
+    reviewToUpdate.updateOne();
+    await openMic.save(); 
+  }catch (err) {
+    console.log(err);
+  }
+  res.redirect(`/open-mics/${openMic._id}`);
+}
+
 
   
