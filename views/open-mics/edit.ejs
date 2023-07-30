@@ -4,8 +4,8 @@
 
 </section> 
 <br><br<h2> Update Review: </h2>
-<form id="add-open-mic-review-form" method="POST" 
-action="/open-mics/<%= openMic.id%>/reviews">
+<form id="update-open-mic-review-form" 
+action="/open-mics/<%= openMic.id%>/reviews/<%= review._id%>?_method=PUT" method="POST">
 <br>
 <textarea name="experience"></textarea>
 <br>

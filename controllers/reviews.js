@@ -58,26 +58,33 @@ async function editReview(req, res) {
       return res.redirect(`/open-mics/${openMic._id}`);
     }
 
-    res.render('open-mics/edit', { openMic, review: reviewToEdit });
+    res.render('open-mics/edit', { openMic, review: reviewToEdit, title: 'Update Your Open Mic Review' });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Server error' });
   }
 }
 
-
 async function updateReview(req, res) {
-  const openMic = await OpenMic.findById(req.params.id);
-  const reviewToUpdate = openMic.reviews.id(req.params.review_id);
 
+  const openMic = await OpenMic.findById(req.params.id)
+  console.log(req.params.reviewId)
+  const index = openMic.reviews.findIndex(function (review) {
+    console.log(review._id)
+    return review._id == req.params.reviewId
+  })
+  console.log(index)
+  openMic.reviews[index] = req.body
   try {
-    reviewToUpdate.updateOne();
-    await openMic.save(); 
-  }catch (err) {
-    console.log(err);
+    await openMic.save()
+    return res.redirect(`/open-mics/${req.params.id}`);
+
+  } catch (err) {
+    console.log(err.message);
+    return res.redirect(`/open-mics/${req.params.id}`);
   }
-  res.redirect(`/open-mics/${openMic._id}`);
 }
 
 
-  
+
+
