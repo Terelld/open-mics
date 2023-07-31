@@ -13,8 +13,5 @@ router.get('/:id/reviews/:review_id/edit', reviewsCtrl.editReview);
 // Route for updating a specific review
 router.put('/:id/reviews/:reviewId', reviewsCtrl.updateReview);
 
-// router.put('/:openMicId/reviews/:reviewId', updateReview);
-
-
 
 module.exports = router;
